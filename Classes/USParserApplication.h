@@ -49,4 +49,6 @@
 
 -(void)writeDebugInfoForWSDL: (USWSDL*)wsdl;
 
+- (void)parseWSDL:(NSURL *)wsdlURL outputDirectory:(NSURL *)outputDirURL;
+
 @end

@@ -120,6 +120,7 @@
 	[panel setCanChooseDirectories:YES];
 	[panel setResolvesAliases:YES];
 	[panel setAllowsMultipleSelection:NO];
+    [panel setCanCreateDirectories:YES];
 	
 	if([panel runModalForTypes:nil] == NSOKButton) {
 		NSString *chosenPath = [[panel filenames] lastObject];
@@ -159,7 +160,7 @@
 	[self didChangeValueForKey:@"canParseWSDL"];
 }
 
-- (void)doParseWSDL
+- (void)parseWSDL:(NSURL *)wsdlURL outputDirectory:(NSURL *)outputDirURL
 {
 	NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	
@@ -167,7 +168,7 @@
 	
 	self.statusString = @"Parsing WSDL file...";
 	
-	USParser *parser = [[USParser alloc] initWithURL:self.wsdlURL];
+	USParser *parser = [[USParser alloc] initWithURL:wsdlURL];
 	USWSDL *wsdl = [parser parse];
 	
 	self.statusString = @"Writing debug info to console...";
@@ -178,7 +179,7 @@
 	
 	self.statusString = @"Generating Objective C code into the output directory...";
 	
-	USWriter *writer = [[USWriter alloc] initWithWSDL:wsdl outputDirectory:self.outURL];
+	USWriter *writer = [[USWriter alloc] initWithWSDL:wsdl outputDirectory:outputDirURL];
 	[writer write];
 	
 	self.statusString = @"Finished!";
@@ -186,6 +187,11 @@
 	self.parsing = NO;
 	
 	[pool release];
+}
+
+- (void)doParseWSDL
+{
+	[self parseWSDL:self.wsdlURL outputDirectory:self.outURL];
 }
 
 -(void)writeDebugInfoForWSDL: (USWSDL*)wsdl
