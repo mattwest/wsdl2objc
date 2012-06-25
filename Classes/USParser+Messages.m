@@ -68,6 +68,7 @@
 		USSchema *elementSchema = [message.schema.wsdl schemaForNamespace:uri];
 		NSString *elementLocalName = [NSXMLNode localNameForName:elementQName];
 		element = [elementSchema elementForName:elementLocalName];
+        part.element = element;
 	} else {
 		NSString *typeQName = [[el attributeForName:@"type"] stringValue];
 		if(typeQName != nil) {
@@ -84,10 +85,10 @@
 //			if(element.type == nil) {
 //				element.type = [elementSchema typeForName:elementLocalName];
 //			}
+            part.element = element;
+            [element release], element = nil;
 		}
 	}
-	
-	part.element = element;
 }
 
 @end

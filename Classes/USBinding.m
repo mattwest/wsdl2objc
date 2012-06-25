@@ -36,7 +36,7 @@
 {
 	if((self = [super init])) {
 		self.name = nil;
-		self.portType = [[USPortType alloc] init];
+		self.portType = [[[USPortType alloc] init] autorelease];
 		self.schema = nil;
 	}
 	

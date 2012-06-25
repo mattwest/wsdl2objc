@@ -53,7 +53,7 @@
 {
 	NSError *error;
 	
-	NSXMLDocument *document = [[NSXMLDocument alloc] initWithContentsOfURL:baseURL options:NSXMLNodeOptionsNone error:&error];
+	NSXMLDocument *document = [[[NSXMLDocument alloc] initWithContentsOfURL:baseURL options:NSXMLNodeOptionsNone error:&error] autorelease];
 	
 	if(error) {
 		NSLog(@"%@", error);
@@ -142,11 +142,13 @@
 		NSXMLDocument *document = [[NSXMLDocument alloc] initWithContentsOfURL:location options:NSXMLNodeOptionsNone error:&error];
 		
 		if(error) {
+            [document release], document = nil;
 			NSLog(@"%@", error);
 			return;
 		}
 		
 		NSXMLElement *schemaElement = [document rootElement];
+        [document release], document = nil;
 		
 		if([[schemaElement localName] isNotEqualTo:@"schema"]) {
 			NSLog(@"During schema import, expected element named schema, found %@", [schemaElement name]);
@@ -168,11 +170,13 @@
 		NSXMLDocument *document = [[NSXMLDocument alloc] initWithContentsOfURL:location options:NSXMLNodeOptionsNone error:&error];
 		
 		if(error) {
+            [document release], document = nil;
 			NSLog(@"%@", error);
 			return;
 		}
 		
 		NSXMLElement *definitionsElement = [document rootElement];
+        [document release], document = nil;
 		
 		if([[definitionsElement localName] isNotEqualTo:@"definitions"]) {
 			NSLog(@"During definitions import, expected element named definitions, found %@", [definitionsElement name]);
