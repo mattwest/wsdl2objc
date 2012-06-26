@@ -64,10 +64,10 @@ static BOOL is_leap_year(unsigned year) {
   NSCalendar *gregorian = [[NSCalendar alloc]
                            initWithCalendarIdentifier:NSGregorianCalendar];
   NSDateComponents *dateComps = [gregorian components: NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|NSWeekdayCalendarUnit fromDate: self];
-  unsigned year = [dateComps year];
+  unsigned year = (unsigned) [dateComps year];
   unsigned week = 0U;
-  unsigned dayOfWeek = ([dateComps weekday] + 6U) % 7U;
-  unsigned dayOfYear = [gregorian ordinalityOfUnit: NSDayCalendarUnit inUnit: NSYearCalendarUnit forDate: self];
+  unsigned dayOfWeek = ((unsigned) [dateComps weekday] + 6U) % 7U;
+  unsigned dayOfYear = (unsigned) [gregorian ordinalityOfUnit: NSDayCalendarUnit inUnit: NSYearCalendarUnit forDate: self];
   
   unsigned prevYear = year - 1U;
   
@@ -112,8 +112,8 @@ static BOOL is_leap_year(unsigned year) {
   NSCalendar *gregorian = [[NSCalendar alloc]
                            initWithCalendarIdentifier:NSGregorianCalendar];
   NSDateComponents *dateComps = [gregorian components: NSYearCalendarUnit fromDate: self];
-  unsigned year = [dateComps year];
-  unsigned dayOfYear = [gregorian ordinalityOfUnit: NSDayCalendarUnit inUnit: NSYearCalendarUnit forDate: self];
+  unsigned year = (unsigned) [dateComps year];
+  unsigned dayOfYear = (unsigned) [gregorian ordinalityOfUnit: NSDayCalendarUnit inUnit: NSYearCalendarUnit forDate: self];
   NSString *timeString;
 
   [gregorian release];

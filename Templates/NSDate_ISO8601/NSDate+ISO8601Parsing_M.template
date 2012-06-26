@@ -209,7 +209,7 @@ static BOOL is_leap_year(unsigned year) {
   } else {
     //Skip leading whitespace.
     unsigned i = 0U;
-    unsigned len = strlen((const char *)ch);
+    unsigned len = (unsigned) strlen((const char *)ch);
     for(; i < len; ++i) {
       if(!isspace(ch[i]))
         break;
@@ -226,9 +226,9 @@ static BOOL is_leap_year(unsigned year) {
       //There is no date here, only a time. Set the date to now; then we'll parse the time.
       isValidDate = isdigit(*++ch);
       
-      year = [dateComps year];
-      month_or_week = [dateComps month];
-      day = [dateComps day];
+      year = (unsigned) [dateComps year];
+      month_or_week = (unsigned) [dateComps month];
+      day = (unsigned) [dateComps day];
     } else {
       while(*ch == '-') {
         ++num_leading_hyphens;
@@ -240,12 +240,12 @@ static BOOL is_leap_year(unsigned year) {
         case 0:
           if(*ch == 'W') {
             if((ch[1] == '-') && isdigit(ch[2]) && ((num_leading_hyphens == 1U) || ((num_leading_hyphens == 2U) && !strict))) {
-              year = [dateComps year];
+              year = (unsigned) [dateComps year];
               month_or_week = 1U;
               ch += 2;
               goto parseDayAfterWeek;
             } else if(num_leading_hyphens == 1U) {
-              year = [dateComps year];
+              year = (unsigned) [dateComps year];
               goto parseWeekAndDay;
             } else
               isValidDate = NO;
@@ -271,7 +271,7 @@ static BOOL is_leap_year(unsigned year) {
             day = segment % 100U;
             segment /= 100U;
             month_or_week = segment % 100U;
-            year  = [dateComps year];
+            year  = (unsigned) [dateComps year];
             year -= (year % 100U);
             year += segment / 100U;
           }
@@ -335,7 +335,7 @@ static BOOL is_leap_year(unsigned year) {
             case 2: //MMDD
               day = segment % 100U;
               month_or_week = segment / 100U;
-              year = [dateComps year];
+              year = (unsigned) [dateComps year];
               
               break;
               
@@ -350,7 +350,7 @@ static BOOL is_leap_year(unsigned year) {
             if(num_leading_hyphens == 1U) {
               if(*ch == '-') ++ch;
               if(*++ch == 'W') {
-                year  = [dateComps year];
+                year  = (unsigned) [dateComps year];
                 year -= (year % 10U);
                 year += segment;
                 goto parseWeekAndDay;
@@ -365,7 +365,7 @@ static BOOL is_leap_year(unsigned year) {
             case 0:
               if(*ch == '-') {
                 //Implicit century
-                year  = [dateComps year];
+                year  = (unsigned) [dateComps year];
                 year -= (year % 100U);
                 year += segment;
                 
@@ -406,7 +406,7 @@ static BOOL is_leap_year(unsigned year) {
                   }
                 }
               } else if(*ch == 'W') {
-                year  = [dateComps year];
+                year  = (unsigned) [dateComps year];
                 year -= (year % 100U);
                 year += segment;
                 
@@ -427,14 +427,14 @@ static BOOL is_leap_year(unsigned year) {
               } else {
                 //Century only. Assume current year.
               centuryOnly:
-                year = segment * 100U + [dateComps year] % 100U;
+                year = segment * 100U + ((unsigned) [dateComps year]) % 100U;
                 month_or_week = day = 1U;
               }
               break;
               
             case 1:; //-YY; -YY-MM (implicit century)
               NSLog(@"(%@) found %u digits and one hyphen, so this is either -YY or -YY-MM; segment (year) is %u", str, num_digits, segment);
-              unsigned current_year = [dateComps year];
+              unsigned current_year = (unsigned) [dateComps year];
               unsigned century = (current_year % 100U);
               year = segment + (current_year - century);
               if(num_digits == 1U) //implied decade
@@ -452,7 +452,7 @@ static BOOL is_leap_year(unsigned year) {
               break;
               
             case 2: //--MM; --MM-DD
-              year = [dateComps year];
+              year = (unsigned) [dateComps year];
               month_or_week = segment;
               if(*ch == '-') {
                 ++ch;
@@ -463,8 +463,8 @@ static BOOL is_leap_year(unsigned year) {
               break;
               
             case 3: //---DD
-              year = [dateComps year];
-              month_or_week = [dateComps month];
+              year = (unsigned) [dateComps year];
+              month_or_week = (unsigned) [dateComps month];
               day = segment;
               break;
               
@@ -491,7 +491,7 @@ static BOOL is_leap_year(unsigned year) {
             isValidDate = NO;
           else {
             day = segment;
-            year = [dateComps year];
+            year = (unsigned) [dateComps year];
             dateSpecification = dateOnly;
             if(strict && (day > (365U + is_leap_year(year))))
               isValidDate = NO;
