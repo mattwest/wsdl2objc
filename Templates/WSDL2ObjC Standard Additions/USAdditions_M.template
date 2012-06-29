@@ -515,6 +515,9 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 
 @implementation SOAPSigner
 
+int register_namespaces(xmlXPathContextPtr xpathCtx, const xmlChar* nsList);
+xmlXPathObjectPtr execute_xpath_expression(xmlDocPtr doc, const xmlChar* xpathExpr, const xmlChar* nsList);
+
 @synthesize delegate;
 
 - (id) initWithDelegate:(id<SOAPSignerDelegate>)del
