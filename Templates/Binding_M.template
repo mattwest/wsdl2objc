@@ -113,7 +113,7 @@
 %ELSE
 	[request setValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
 %ENDIF
-	[request setValue:[NSString stringWithFormat:@"%u", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
+	[request setValue:[NSString stringWithFormat:@"%lu", [bodyData length]] forHTTPHeaderField:@"Content-Length"];
 	[request setValue:self.address.host forHTTPHeaderField:@"Host"];
 	[request setHTTPMethod: @"POST"];
 	// set version 1.1 - how?
