@@ -101,9 +101,8 @@ BOOL classExists (NSString *className) {
 //
 // description:
 //  Returns YES if the file specified in path is a regular file, or NO if it
-//  is not. If path specifies a symbolic link, this method traverses the link
-//  and returns YES or NO based on the existence of the file at the link
-//  destination. If path begins with a tilde, it must first be expanded with
+//  is not. If path specifies a symbolic link, this method returns NO.
+//  If path begins with a tilde, it must first be expanded with
 //  stringByExpandingTildeInPath, or this method will return NO.
 //
 // pre-conditions:
@@ -117,8 +116,12 @@ BOOL classExists (NSString *className) {
 
 - (BOOL)isRegularFileAtPath:(NSString *)path
 {
-	return ([[[self fileAttributesAtPath:path traverseLink:YES] fileType]
-		isEqualToString:@"NSFileTypeRegular"]);
+    NSError *error = nil;
+    NSDictionary *fileAttributes = [self attributesOfItemAtPath:path error:&error];
+    if (error) {
+        return NO;
+    }
+    return [[fileAttributes fileType] isEqualToString:@"NSFileTypeRegular"];
 } // end method
 
 @end // private category
