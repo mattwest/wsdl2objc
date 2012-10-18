@@ -881,7 +881,7 @@ BOOL classExists (NSString *className) {
 						remainder_ = [[line restOfWordsUsingDelimitersFromSet:whitespaceSet]
 									restOfWordsUsingDelimitersFromSet:whitespaceSet];
 						// check if we have an operand
-						len = [remainder_ length];
+						len = (unsigned) [remainder_ length];
 						if (len == 0) {
 							// this is an error - no operand to compare
 							error = [TEError error:TE_MISSING_IDENTIFIER_AFTER_TOKEN_ERROR
@@ -995,7 +995,7 @@ BOOL classExists (NSString *className) {
 							remainder_ = [[line restOfWordsUsingDelimitersFromSet:whitespaceSet]
 									restOfWordsUsingDelimitersFromSet:whitespaceSet];
 							// check if we have an operand
-							len = [remainder_ length];
+							len = (unsigned) [remainder_ length];
 							if (len == 0) {
 								// this is an error - no operand to compare
 								error = [TEError error:TE_MISSING_IDENTIFIER_AFTER_TOKEN_ERROR

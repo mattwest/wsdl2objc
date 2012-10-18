@@ -74,7 +74,7 @@
 
 - (unsigned)count;
 {
-	return [self->_stack count];
+	return (unsigned) [self->_stack count];
 } // end method
 
 // ---------------------------------------------------------------------------

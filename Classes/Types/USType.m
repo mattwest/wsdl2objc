@@ -118,7 +118,7 @@
 
 - (NSString *)enumCount
 {
-	return [[NSNumber numberWithUnsignedInt:[self.enumerationValues count]] stringValue];
+	return [[NSNumber numberWithUnsignedInt:(unsigned) [self.enumerationValues count]] stringValue];
 }
 
 - (NSString *)templateFileHPath
