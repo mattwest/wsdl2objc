@@ -61,7 +61,7 @@
 		}
 	}
 	
-	USOperationFault *newFault = [[USOperationFault new] autorelease];
+	USOperationFault *newFault = [USOperationFault new];
 	newFault.operation = self;
 	newFault.name = aName;
 	[self.faults addObject:newFault];

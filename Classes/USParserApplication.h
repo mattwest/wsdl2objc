@@ -42,8 +42,8 @@
 
 - (IBAction)parseWSDL:(id)sender;
 
-@property (readonly) NSURL *wsdlURL;
-@property (readonly) NSURL *outURL;
+@property (weak, readonly) NSURL *wsdlURL;
+@property (weak, readonly) NSURL *outURL;
 @property (copy) NSString *statusString;
 @property (assign) BOOL parsing;
 

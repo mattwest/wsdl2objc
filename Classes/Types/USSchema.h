@@ -54,20 +54,19 @@
 @property (copy) NSString *prefix;			// unique global schema prefix (after all includes)
 @property (copy) NSString *localPrefix;		// specified schema prefix within local scope
 @property (copy) NSString *fullName;
-@property (retain) NSMutableArray *types;
-@property (retain) NSMutableArray *elements;
-@property (retain) NSMutableArray *attributes;
-@property (retain) NSMutableArray *imports;
-@property (retain) NSMutableArray *messages;
-@property (retain) NSMutableArray *portTypes;
-@property (retain) NSMutableArray *bindings;
-@property (retain) NSMutableArray *services;
-@property (retain) USWSDL *wsdl;
+@property (strong) NSMutableArray *types;
+@property (strong) NSMutableArray *elements;
+@property (strong) NSMutableArray *attributes;
+@property (strong) NSMutableArray *imports;
+@property (strong) NSMutableArray *messages;
+@property (strong) NSMutableArray *portTypes;
+@property (strong) NSMutableArray *bindings;
+@property (strong) NSMutableArray *services;
+@property (strong) USWSDL *wsdl;
 @property (assign) BOOL hasBeenParsed;
 @property (assign) BOOL hasBeenWritten;
 
 -(id)initWithWSDL:(USWSDL *)aWsdl;
--(void)dealloc;
 
 - (USType *)typeForName:(NSString *)aName;
 - (USElement *)elementForName:(NSString *)aName;

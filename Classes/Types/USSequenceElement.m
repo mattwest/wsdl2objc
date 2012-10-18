@@ -27,7 +27,7 @@
 @implementation USSequenceElement
 @synthesize minOccurs;
 @synthesize maxOccurs;
-@synthesize name;
+//@synthesize name;
 @synthesize wsdlName;
 @synthesize type;
 
@@ -44,6 +44,11 @@
 	return newSeqElement;
 }
 
+- (NSString *)name
+{
+    return name;
+}
+
 - (void)setName:(NSString *)aName
 {
 	USObjCKeywords *keywords = [USObjCKeywords sharedInstance];
@@ -53,7 +58,6 @@
 		aName = [NSString stringWithFormat:@"%@_", aName];
 	}
 	
-	if(name != nil) [name autorelease];
 	name = [aName copy];
 }
 

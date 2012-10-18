@@ -33,9 +33,9 @@
 }
 
 @property (copy) NSString *name;
-@property (retain) NSMutableArray *ports;
-@property (retain) USSchema *schema;
-@property (readonly) NSString *className;
+@property (strong) NSMutableArray *ports;
+@property (strong) USSchema *schema;
+@property (weak, readonly) NSString *className;
 
 - (USPort *)portForName:(NSString *)aName;
 

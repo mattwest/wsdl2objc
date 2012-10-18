@@ -211,7 +211,7 @@
 
 - (void)processSequenceElementElement:(NSXMLElement *)el type:(USType *)type
 {
-	USSequenceElement *seqElement = [[USSequenceElement new] autorelease];
+	USSequenceElement *seqElement = [USSequenceElement new];
 	
 	NSXMLNode *refNode = [el attributeForName:@"ref"];
 	if(refNode != nil) {
@@ -434,7 +434,7 @@
 	// If the schema is not nil, we assign the attribute to the schema
 	// Otherwise we assume the type is not nil and we assign the attribute to the type
 	
-	USAttribute *attribute = [[USAttribute new] autorelease];
+	USAttribute *attribute = [USAttribute new];
 	if (schema != nil) {
 		attribute.schema = schema;
 	} else {

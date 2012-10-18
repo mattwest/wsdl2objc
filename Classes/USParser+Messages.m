@@ -86,7 +86,7 @@
 //				element.type = [elementSchema typeForName:elementLocalName];
 //			}
             part.element = element;
-            [element release], element = nil;
+            element = nil;
 		}
 	}
 }

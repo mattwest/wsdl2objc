@@ -49,7 +49,7 @@
 		}
 	}
 	
-	USOperation *newOperation = [[USOperation new] autorelease];
+	USOperation *newOperation = [USOperation new];
 	newOperation.name = aName;
 	newOperation.portType = self;
 	[self.operations addObject:newOperation];

@@ -32,7 +32,7 @@
 }
 
 @property (copy) NSString *name;
-@property (retain) USMessage *message;
-@property (retain) USOperation *operation;
+@property (strong) USMessage *message;
+@property (strong) USOperation *operation;
 
 @end

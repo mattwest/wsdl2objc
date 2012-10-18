@@ -52,7 +52,7 @@
 		}
 	}
 	
-	USPart *newPart = [[USPart new] autorelease];
+	USPart *newPart = [USPart new];
 	newPart.message = self;
 	newPart.name = aName;
 	[self.parts addObject:newPart];

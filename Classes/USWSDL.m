@@ -45,11 +45,6 @@
 	return self;
 }
 
--(void)dealloc
-{
-	[schemas release];
-	[super dealloc];
-}
 
 - (USSchema *)schemaForNamespace:(NSString *)aNamespace
 {
@@ -59,7 +54,7 @@
 		}
 	}
 	
-	USSchema *newSchema = [[[USSchema alloc] initWithWSDL:self] autorelease];
+	USSchema *newSchema = [[USSchema alloc] initWithWSDL:self];
 	newSchema.fullName = aNamespace;
 	[self.schemas addObject:newSchema];
 	

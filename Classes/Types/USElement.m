@@ -27,7 +27,7 @@
 
 @implementation USElement
 
-@synthesize name;
+//@synthesize name;
 @synthesize wsdlName;
 @synthesize type;
 @synthesize schema;
@@ -48,6 +48,11 @@
 	return self;
 }
 
+- (NSString *)name
+{
+    return name;
+}
+
 - (void)setName:(NSString *)aName
 {
 	USObjCKeywords *keywords = [USObjCKeywords sharedInstance];
@@ -57,7 +62,6 @@
 		aName = [NSString stringWithFormat:@"%@_", aName];
 	}
 	
-	if(name != nil) [name autorelease];
 	name = [aName copy];
 }
 

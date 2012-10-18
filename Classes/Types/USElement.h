@@ -37,11 +37,11 @@
 }
 
 @property (copy) NSString *name;
-@property (retain) NSString *wsdlName;
-@property (retain) USType *type;
-@property (retain) USSchema *schema;
+@property (strong) NSString *wsdlName;
+@property (strong) USType *type;
+@property (strong) USSchema *schema;
 @property (assign) BOOL hasBeenParsed;
-@property (retain) NSMutableArray *waitingSeqElements;
+@property (strong) NSMutableArray *waitingSeqElements;
 
 - (NSString *)uname;
 

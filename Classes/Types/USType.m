@@ -47,11 +47,11 @@
 		self.hasBeenWritten = NO;
 		
 		self.representationClass = @"";
-		self.enumerationValues = [[[NSMutableArray alloc] init] autorelease];
+		self.enumerationValues = [[NSMutableArray alloc] init];
 		
 		self.superClass = nil;
-		self.sequenceElements = [[[NSMutableArray alloc] init] autorelease];
-		self.attributes = [[[NSMutableArray alloc] init] autorelease];
+		self.sequenceElements = [[NSMutableArray alloc] init];
+		self.attributes = [[NSMutableArray alloc] init];
 	}
 	return self;
 }

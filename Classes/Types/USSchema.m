@@ -29,6 +29,8 @@
 #import "USPortType.h"
 #import "USBinding.h"
 #import "USService.h"
+#import "USWSDL.h"
+
 
 @implementation USSchema
 
@@ -70,13 +72,6 @@
 }
 
 
--(void)dealloc
-{
-	[fullName release];
-	[types release];
-	[super dealloc];
-	[wsdl release];
-}
 
 - (USType *)typeForName:(NSString *)aName
 {
@@ -89,7 +84,7 @@
 		}
 	}
 	
-	USType *newType = [[USType new] autorelease];
+	USType *newType = [USType new];
 	newType.typeName = aName;
 	newType.schema = self;
 	
@@ -115,7 +110,7 @@
 		}
 	}
 	
-	USElement *newElement = [[USElement new] autorelease];
+	USElement *newElement = [USElement new];
 	newElement.name = aName;
 	newElement.schema = self;
 	
@@ -141,7 +136,7 @@
 		}
 	}
 	
-	USAttribute *newattribute = [[USAttribute new] autorelease];
+	USAttribute *newattribute = [USAttribute new];
 	newattribute.name = aName;
 	newattribute.schema = self;
 	
@@ -161,7 +156,7 @@
 		}
 	}
 	
-	USMessage *newMessage = [[USMessage new] autorelease];
+	USMessage *newMessage = [USMessage new];
 	newMessage.schema = self;
 	newMessage.name = aName;
 	[self.messages addObject:newMessage];
@@ -179,7 +174,7 @@
 		}
 	}
 	
-	USPortType *newPortType = [[USPortType new] autorelease];
+	USPortType *newPortType = [USPortType new];
 	newPortType.schema = self;
 	newPortType.name = aName;
 	[self.portTypes addObject:newPortType];
@@ -197,7 +192,7 @@
 		}
 	}
 	
-	USBinding *newBinding = [[USBinding new] autorelease];
+	USBinding *newBinding = [USBinding new];
 	newBinding.schema = self;
 	newBinding.name = aName;
 	[self.bindings addObject:newBinding];
@@ -215,7 +210,7 @@
 		}
 	}
 	
-	USService *newService = [[USService new] autorelease];
+	USService *newService = [USService new];
 	newService.schema = self;
 	newService.name = aName;
 	[self.services addObject:newService];

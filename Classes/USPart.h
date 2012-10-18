@@ -32,8 +32,8 @@
 }
 
 @property (copy) NSString *name;
-@property (retain) USElement *element;
-@property (retain) USMessage *message;
+@property (strong) USElement *element;
+@property (strong) USMessage *message;
 
 - (NSString *)uname;
 

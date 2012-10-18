@@ -33,8 +33,8 @@
 }
 
 @property (copy) NSString *name;
-@property (retain) NSMutableArray *operations;
-@property (retain) USSchema *schema;
+@property (strong) NSMutableArray *operations;
+@property (strong) USSchema *schema;
 
 - (USOperation *)operationForName:(NSString *)aName;
 

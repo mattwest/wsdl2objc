@@ -34,9 +34,9 @@
 }
 
 @property (copy) NSString *name;
-@property (retain) NSMutableArray *parts;
+@property (strong) NSMutableArray *parts;
 @property (assign) BOOL hasBeenParsed;
-@property (retain) USSchema *schema;
+@property (strong) USSchema *schema;
 
 - (USPart *)partForName:(NSString *)aName;
 

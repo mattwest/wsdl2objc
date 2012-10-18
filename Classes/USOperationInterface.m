@@ -37,7 +37,7 @@
 
 + (USOperationInterface *)operationInterfaceForOperation:(USOperation *)operation
 {
-	USOperationInterface *interface = [[USOperationInterface new] autorelease];
+	USOperationInterface *interface = [USOperationInterface new];
 	interface.operation = operation;
 	
 	return interface;

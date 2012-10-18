@@ -30,7 +30,7 @@
 }
 
 @property (copy) NSURL *outDir;
-@property (retain) USWSDL *wsdl;
+@property (strong) USWSDL *wsdl;
 
 - (id)initWithWSDL:(USWSDL *)aWsdl outputDirectory:(NSURL *)anOutDir;
 

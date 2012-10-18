@@ -34,10 +34,10 @@
 }
 
 @property (copy) NSString *name;
-@property (retain) NSMutableArray *headers;
-@property (retain) USMessage *body;
-@property (retain) USOperation *operation;
-@property (readonly) NSString *className;
+@property (strong) NSMutableArray *headers;
+@property (strong) USMessage *body;
+@property (strong) USOperation *operation;
+@property (weak, readonly) NSString *className;
 
 + (USOperationInterface *)operationInterfaceForOperation:(USOperation *)operation;
 

@@ -32,13 +32,12 @@
 }
 
 @property (copy) NSString *name;
-@property (retain) NSString *wsdlName;
+@property (strong) NSString *wsdlName;
 @property (copy) NSString *attributeDefault;
-@property (retain) USSchema * schema;
-@property (retain) USType * type;
+@property (strong) USSchema * schema;
+@property (strong) USType * type;
 
 -(id)init;
--(void)dealloc;
 
 - (NSDictionary *)templateKeyDictionary;
 

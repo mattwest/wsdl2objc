@@ -31,12 +31,11 @@
 	NSString *soapVersion;
 }
 
-@property (retain) NSMutableArray *schemas;
-@property (retain) USSchema *targetNamespace;
-@property (nonatomic, retain) NSString *soapVersion;
+@property (strong) NSMutableArray *schemas;
+@property (strong) USSchema *targetNamespace;
+@property (nonatomic, strong) NSString *soapVersion;
 
 -(id)init;
--(void)dealloc;
 
 - (void)addXSDSchema;
 

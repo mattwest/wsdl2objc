@@ -49,11 +49,6 @@ const NSRange kZeroRange = { 0, 0 };
 	return self;
 } // end method
 
-// private method: deallocate instance
-- (void)dealloc {
-	[super dealloc];
-} // end method
-
 // ---------------------------------------------------------------------------
 // Class Method:  error:inLine:atToken:
 // ---------------------------------------------------------------------------
@@ -70,7 +65,7 @@ const NSRange kZeroRange = { 0, 0 };
 			inLine:(unsigned)line 
 		   atToken:(enum TEToken)token
 {
-	TEError *thisInstance = [[[TEError alloc] init] autorelease];
+	TEError *thisInstance = [[TEError alloc] init];
 	NSException *exception;
 	
 	// initialise instance variables

@@ -47,11 +47,6 @@
 	return self;
 } // end method
 
-// private method: deallocate instance
-- (void)dealloc {
-	[super dealloc];
-} // end method
-
 // ---------------------------------------------------------------------------
 // Class Method:  stackWithCapacity:
 // ---------------------------------------------------------------------------
@@ -60,7 +55,7 @@
 
 + (LIFO *)stackWithCapacity:(unsigned)depth;
 {
-	LIFO *thisInstance = [[[LIFO alloc] init] autorelease];
+	LIFO *thisInstance = [[LIFO alloc] init];
 	
 	thisInstance->_stack = [NSMutableArray arrayWithCapacity:depth];
 	return thisInstance;
@@ -113,7 +108,6 @@
 		return nil;
 	}
 	else {
-		[theObject retain];
 		[self->_stack removeLastObject];
 		return theObject;
 	} // end if

@@ -30,7 +30,6 @@
 }
 
 -(id)initWithURL:(NSURL *)anURL;
--(void)dealloc;
 -(USWSDL*)parse;
 
 - (void)processDefinitionsElement:(NSXMLElement *)el wsdl:(USWSDL *)wsdl;

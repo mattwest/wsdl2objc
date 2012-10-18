@@ -51,7 +51,7 @@
 		}
 	}
 	
-	USPort *newPort = [[USPort new] autorelease];
+	USPort *newPort = [USPort new];
 	newPort.service = self;
 	newPort.name = aName;
 	[self.ports addObject:newPort];

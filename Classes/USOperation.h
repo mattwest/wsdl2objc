@@ -38,10 +38,10 @@
 
 @property (copy) NSString *name;
 @property (copy) NSString *soapAction;
-@property (retain) USOperationInterface *input;
-@property (retain) USOperationInterface *output;
-@property (retain) NSMutableArray *faults;
-@property (retain) USPortType *portType;
+@property (strong) USOperationInterface *input;
+@property (strong) USOperationInterface *output;
+@property (strong) NSMutableArray *faults;
+@property (strong) USPortType *portType;
 
 - (USOperationFault *)faultForName:(NSString *)aName;
 

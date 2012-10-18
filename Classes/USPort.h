@@ -34,8 +34,8 @@
 }
 
 @property (copy) NSString *name;
-@property (retain) USBinding *binding;
+@property (strong) USBinding *binding;
 @property (copy) NSString *address;
-@property (retain) USService *service;
+@property (strong) USService *service;
 
 @end

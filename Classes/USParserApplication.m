@@ -143,7 +143,6 @@
 {
 	[self willChangeValueForKey:@"statusString"];
 	
-	if(statusString != nil) [statusString release];
 	statusString = [aString copy];
 	
 	[self didChangeValueForKey:@"statusString"];
@@ -162,31 +161,30 @@
 
 - (void)parseWSDL:(NSURL *)wsdlURL outputDirectory:(NSURL *)outputDirURL
 {
-	NSAutoreleasePool *pool = [NSAutoreleasePool new];
+	@autoreleasepool {
 	
-	self.parsing = YES;
+		self.parsing = YES;
+		
+		self.statusString = @"Parsing WSDL file...";
+		
+		USParser *parser = [[USParser alloc] initWithURL:wsdlURL];
+		USWSDL *wsdl = [parser parse];
+		
+		self.statusString = @"Writing debug info to console...";
+		
+		[self writeDebugInfoForWSDL:wsdl];
+		
+		
+		self.statusString = @"Generating Objective C code into the output directory...";
+		
+		USWriter *writer = [[USWriter alloc] initWithWSDL:wsdl outputDirectory:outputDirURL];
+		[writer write];
+		
+		self.statusString = @"Finished!";
+		
+		self.parsing = NO;
 	
-	self.statusString = @"Parsing WSDL file...";
-	
-	USParser *parser = [[USParser alloc] initWithURL:wsdlURL];
-	USWSDL *wsdl = [parser parse];
-	
-	self.statusString = @"Writing debug info to console...";
-	
-	[self writeDebugInfoForWSDL:wsdl];
-	
-	[parser release];
-	
-	self.statusString = @"Generating Objective C code into the output directory...";
-	
-	USWriter *writer = [[USWriter alloc] initWithWSDL:wsdl outputDirectory:outputDirURL];
-	[writer write];
-	
-	self.statusString = @"Finished!";
-	
-	self.parsing = NO;
-	
-	[pool release];
+	}
 }
 
 - (void)doParseWSDL
